@@ -1,0 +1,30 @@
+/* Bvlgari-Inspired Minimalist Footer */
+
+.footer {
+  background-color: #ffffff;
+  padding: 4rem 2rem;
+  text-align: center;
+  border-top: 1px solid #f0f0f0;
+  margin-top: auto; /* Pushes footer to bottom if page is short */
+}
+
+.footer-copyright {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.3em; /* Extremely wide tracking for luxury feel */
+  color: #000000;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Responsive adjustment for Mobile */
+@media (max-width: 576px) {
+  .footer {
+    padding: 3rem 1rem;
+  }
+  .footer-copyright {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+}

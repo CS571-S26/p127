@@ -1,16 +1,11 @@
-/* Bvlgari-Inspired Minimalist Hero Section */
-
 .hero-section {
   width: 100%;
-  height: 70vh; /* 70vh instead of 100vh so users can peek at the grid below */
+  height: 70vh; 
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff; /* Pure white canvas */
+  background-color: #ffffff; 
 }
-
-/* We removed the .hero-background and .hero-image classes 
-   because luxury minimalism relies on clean, empty white space! */
 
 .hero-content {
   text-align: center;
@@ -18,19 +13,18 @@
 
 .hero-title {
   font-family: 'Playfair Display', serif;
-  font-size: 5rem; /* Massive, striking text */
+  font-size: 3.5rem; /* SHRUNK DOWN FROM 5rem */
   font-weight: 400;
-  letter-spacing: 0.3em; /* Extremely wide tracking */
-  color: #004b3a; /* Deep Malachite Green */
+  letter-spacing: 0.25em; /* Adjusted to match the new size */
+  color: #004b3a; 
   text-transform: uppercase;
   margin: 0;
-  /* Removed text-shadow to keep it razor-flat and modern */
 }
 
 /* Responsive adjustments for iPad */
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Scaled down */
     letter-spacing: 0.2em;
   }
 }
@@ -38,7 +32,7 @@
 /* Responsive adjustments for Mobile */
 @media (max-width: 576px) {
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Scaled down */
     letter-spacing: 0.15em;
   }
 }
