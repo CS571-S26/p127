@@ -1,3 +1,8 @@
+/* App.css */
+main, section, .content-wrapper {
+  padding-top: 80px; /* Adjust this to match your navbar height */
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;

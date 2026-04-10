@@ -1,0 +1,145 @@
+/* Jade Card Component Styles */
+
+.jade-card {
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.jade-card:hover {
+  border-color: #d4af37;
+  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.15);
+  transform: translateY(-8px);
+}
+
+.jade-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.jade-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.jade-card:hover .jade-card-image {
+  transform: scale(1.08);
+}
+
+.jade-card-grade {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(212, 175, 55, 0.9);
+  color: #0f0f0f;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.jade-card:hover .jade-card-grade {
+  background: #d4af37;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+.jade-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.jade-card-title {
+  color: #f3f4f6;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.jade-card-footer {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.jade-card-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #d4af37, #f0e68c);
+  color: #0f0f0f;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.jade-card-btn:hover {
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.jade-card-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jade-card {
+    border-radius: 6px;
+  }
+
+  .jade-card-title {
+    font-size: 1rem;
+  }
+
+  .jade-card-body {
+    padding: 1.25rem;
+  }
+
+  .jade-card-grade {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .jade-card-body {
+    padding: 1rem;
+  }
+
+  .jade-card-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .jade-card-btn {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.9rem;
+  }
+}

@@ -1,0 +1,52 @@
+/* Jade Collection Masonry Grid */
+
+.jade-collection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-rows: 400px;
+  gap: 3rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.jade-collection-item {
+  display: flex;
+}
+
+.jade-collection-item.item-0 {
+  grid-row-end: span 1;
+}
+
+.jade-collection-item.item-1 {
+  grid-row-end: span 2;
+}
+
+.jade-collection-item.item-2 {
+  grid-row-end: span 1;
+}
+
+/* Add more white space */
+.jade-collection-item {
+  margin-bottom: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .jade-collection {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .jade-collection-item.item-1 {
+    grid-row-end: span 1; /* Reset for mobile */
+  }
+}
+
+@media (max-width: 576px) {
+  .jade-collection {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
