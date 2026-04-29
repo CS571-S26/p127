@@ -1,52 +1,60 @@
-/* Jade Collection Masonry Grid */
-
 .jade-collection {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-auto-rows: 400px;
-  gap: 3rem;
-  padding: 2rem;
-  max-width: 1400px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.8vw, 42px);
+  width: min(1280px, 100%);
   margin: 0 auto;
 }
 
-.jade-collection-item {
+.jade-collection-scroll {
   display: flex;
+  width: 100%;
+  max-width: none;
+  gap: clamp(18px, 2.4vw, 34px);
+  margin: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: 0 24px 28px;
+  scroll-padding-inline: 24px;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--jade) transparent;
+  scrollbar-width: thin;
 }
 
-.jade-collection-item.item-0 {
-  grid-row-end: span 1;
+.jade-collection-scroll::-webkit-scrollbar {
+  height: 7px;
 }
 
-.jade-collection-item.item-1 {
-  grid-row-end: span 2;
+.jade-collection-scroll::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.jade-collection-item.item-2 {
-  grid-row-end: span 1;
+.jade-collection-scroll::-webkit-scrollbar-thumb {
+  background: rgba(49, 95, 78, 0.42);
 }
 
-/* Add more white space */
-.jade-collection-item {
-  margin-bottom: 2rem;
+.jade-collection-scroll .jade-collection-item {
+  flex: 0 0 clamp(280px, 31vw, 410px);
+  scroll-snap-align: start;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .jade-collection {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
+@media (max-width: 980px) {
+  .jade-collection-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .jade-collection-item.item-1 {
-    grid-row-end: span 1; /* Reset for mobile */
-  }
 }
 
-@media (max-width: 576px) {
-  .jade-collection {
+@media (max-width: 640px) {
+  .jade-collection-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+  }
+
+  .jade-collection-scroll {
+    padding-inline: 14px;
+    scroll-padding-inline: 14px;
+  }
+
+  .jade-collection-scroll .jade-collection-item {
+    flex-basis: min(82vw, 360px);
   }
 }

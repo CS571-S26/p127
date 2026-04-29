@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://T1mothyChen416.github.io/webProject",
+  "homepage": "https://CS571-S26.github.io/p127",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -1,53 +1,67 @@
-import Hero from '../Hero.jsx';
+import { Link } from 'react-router-dom'
+import Hero from '../Hero.jsx'
+import JadeCollection from '../JadeCollection.jsx'
+import '../../styles/Home.css'
+import { products } from '../../data/products.js'
 
-export default function Home() {
+export default function Home({ reserveTray }) {
   return (
     <>
-      {/* Component 1: The Hero (Luxury Intro) */}
       <Hero />
 
-      {/* Component 2: A Story/Archive Section (Editorial Look) */}
-      <section style={{ padding: '80px 20px', textAlign: 'center', backgroundColor: '#faf9f8' }}>
-        
-        <h2 style={{ 
-          fontFamily: "'Playfair Display', serif", 
-          fontSize: '24px', /* Scaled down for elegance */
-          fontWeight: '400',
-          letterSpacing: '0.15em', 
-          textTransform: 'uppercase',
-          color: '#1a1a1a',
-          marginBottom: '24px'
-        }}>
-          The Jade Archive
-        </h2>
-        
-        <p style={{ 
-          maxWidth: '500px', /* Narrower column makes it easier to read */
-          margin: '0 auto 32px auto', 
-          lineHeight: '1.8', 
-          color: '#666666', /* Softer grey contrast */
-          fontSize: '14px', /* Standard luxury body size */
-          fontWeight: '300'
-        }}>
-          Discover a curated collection of Hetian jade and 24k gold artifacts, 
-          preserved for the modern collector.
+      <section className="home-section intro-section" id="provenance">
+        <div className="section-kicker">Accountable by design</div>
+        <h2>Every piece should feel calm before it feels rare.</h2>
+        <p>
+          Yu Studios treats jade as a material with memory. Each listing favors plain language,
+          clear treatment notes, origin context, and patient inspection over urgency.
         </p>
-        
-        <button style={{ 
-          background: 'none', 
-          border: '1px solid #e0e0e0', /* Very faint, delicate border */
-          padding: '12px 32px', 
-          cursor: 'pointer',
-          textTransform: 'uppercase',
-          fontSize: '10px', /* Tiny button text is a classic luxury trope */
-          letterSpacing: '0.2em',
-          color: '#000000',
-          transition: 'border-color 0.3s ease'
-        }}>
-          Explore History
-        </button>
-        
+        <div className="standard-grid">
+          <article>
+            <span>01</span>
+            <h3>Material clarity</h3>
+            <p>Natural jadeite or nephrite is named plainly, with treatment status shown before purchase.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Documented origin</h3>
+            <p>Origin and studio notes sit beside the object, not hidden behind sales language.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Measured pace</h3>
+            <p>Inquiry, appointment, and reserve flows support careful buying decisions.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="home-section featured-section" id="atelier">
+        <div className="section-heading-row">
+          <div>
+            <div className="section-kicker">Selected pieces</div>
+            <h2>The Quiet Vault</h2>
+          </div>
+          <p>
+            Scroll through six reference objects showing how the marketplace can feel more like a
+            private jade room than a conventional shop grid.
+          </p>
+        </div>
+        <div className="scroll-gallery-shell" aria-label="Scrollable selected jade pieces">
+          <JadeCollection items={products} variant="scroll" reserveTray={reserveTray} />
+        </div>
+      </section>
+
+      <section className="home-section appointment-section" id="appointment">
+        <div>
+          <div className="section-kicker">Private viewing</div>
+          <h2>Ask for the full notes before you buy.</h2>
+        </div>
+        <p>
+          A future appointment flow can share additional images, lab documents, condition notes,
+          care guidance, and return terms before a buyer commits.
+        </p>
+        <Link className="quiet-button" to="/appointment">Request Appointment</Link>
       </section>
     </>
-  );
+  )
 }

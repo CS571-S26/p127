@@ -1,145 +1,150 @@
-/* Jade Card Component Styles */
-
 .jade-card {
-  background: transparent;
-  border: 1px solid #2a2a2a;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  background: rgba(255, 254, 251, 0.66);
+  border: 1px solid var(--line);
+  transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
 }
 
 .jade-card:hover {
-  border-color: #d4af37;
-  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.15);
-  transform: translateY(-8px);
+  border-color: rgba(49, 95, 78, 0.55);
+  background: var(--warm-white);
+  transform: translateY(-3px);
 }
 
 .jade-card-image-wrapper {
-  position: relative;
   width: 100%;
-  padding-bottom: 100%;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
-  background: #1a1a1a;
+  padding: 18px;
+  background: rgba(255, 254, 251, 0.74);
 }
 
 .jade-card-image {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  object-fit: contain;
+  filter: saturate(0.82) contrast(0.96);
+  transition: transform 360ms ease, filter 360ms ease;
 }
 
 .jade-card:hover .jade-card-image {
-  transform: scale(1.08);
-}
-
-.jade-card-grade {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(212, 175, 55, 0.9);
-  color: #0f0f0f;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.jade-card:hover .jade-card-grade {
-  background: #d4af37;
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+  transform: scale(1.025);
+  filter: saturate(0.95) contrast(0.98);
 }
 
 .jade-card-body {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 1.5rem;
-  flex-grow: 1;
+  padding: 24px;
+}
+
+.jade-card-material {
+  margin-bottom: 12px;
+  color: var(--jade);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .jade-card-title {
-  color: #f3f4f6;
-  font-size: 1.15rem;
+  color: var(--ink);
+  font-size: 1.75rem;
+  line-height: 1.05;
+}
+
+.jade-card-note {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.jade-card-details {
+  display: grid;
+  gap: 14px;
+  margin: 24px 0 0;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.jade-card-details div {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.jade-card-details dt {
+  color: var(--stone);
+  font-size: 0.68rem;
   font-weight: 600;
-  line-height: 1.4;
-  margin-bottom: 1rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.jade-card-details dd {
+  min-width: 0;
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.86rem;
+  line-height: 1.5;
 }
 
 .jade-card-footer {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 24px;
 }
 
+.jade-card-link,
 .jade-card-btn {
-  flex: 1;
-  background: linear-gradient(135deg, #d4af37, #f0e68c);
-  color: #0f0f0f;
-  border: none;
-  padding: 0.75rem 1rem;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
+  width: 100%;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
 }
 
+.jade-card-link:hover,
 .jade-card-btn:hover {
-  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
-  transform: translateY(-2px);
+  border-color: var(--jade);
+  color: var(--jade);
+  background: var(--jade-soft);
 }
 
-.jade-card-btn:active {
-  transform: translateY(0);
+.jade-card-btn:disabled {
+  cursor: default;
+  border-color: rgba(49, 95, 78, 0.35);
+  color: var(--jade);
+  background: rgba(220, 232, 223, 0.62);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .jade-card {
-    border-radius: 6px;
-  }
-
-  .jade-card-title {
-    font-size: 1rem;
-  }
-
+@media (max-width: 560px) {
   .jade-card-body {
-    padding: 1.25rem;
+    padding: 20px;
   }
 
-  .jade-card-grade {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.8rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .jade-card-body {
-    padding: 1rem;
+  .jade-card-details div {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 
-  .jade-card-title {
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .jade-card-btn {
-    font-size: 0.85rem;
-    padding: 0.6rem 0.9rem;
+  .jade-card-footer {
+    grid-template-columns: 1fr;
   }
 }

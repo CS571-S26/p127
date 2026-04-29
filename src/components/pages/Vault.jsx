@@ -1,54 +1,81 @@
+import { useMemo, useState } from 'react'
 import JadeCollection from '../JadeCollection'
 import '../../styles/Vault.css'
+import { products } from '../../data/products.js'
 
-export default function Vault() {
-  const jadeItems = [
-    {
-      id: 1,
-      title: 'Imperial Jade Pendant',
-      image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop',
-      grade: 'Grade A',
-    },
-    {
-      id: 2,
-      title: 'Royal Green Bracelet',
-      image: 'https://images.unsplash.com/photo-1515562141207-5dff95ffb8fe?w=400&h=400&fit=crop',
-      grade: 'Grade A+',
-    },
-    {
-      id: 3,
-      title: 'Timeless Jade Ring',
-      image: 'https://images.unsplash.com/photo-1599643478521-41ee1d3ffaf5?w=400&h=400&fit=crop',
-      grade: 'Grade A',
-    },
-    {
-      id: 4,
-      title: 'Emerald Jade Earrings',
-      image: 'https://images.unsplash.com/photo-1599643478520-413f8c94baa1?w=400&h=400&fit=crop',
-      grade: 'Grade B+',
-    },
-    {
-      id: 5,
-      title: 'Celestial Jade Necklace',
-      image: 'https://images.unsplash.com/photo-1515377905703-c511b6b891f1?w=400&h=400&fit=crop',
-      grade: 'Grade A+',
-    },
-    {
-      id: 6,
-      title: 'Heritage Jade Pendant',
-      image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop',
-      grade: 'Grade A',
-    },
-  ]
+const filters = ['All objects', 'Jadeite', 'Nephrite', 'Untreated']
+
+export default function Vault({ reserveTray }) {
+  const [activeFilter, setActiveFilter] = useState('All objects')
+  const [query, setQuery] = useState('')
+
+  const filteredItems = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase()
+
+    return products.filter((product) => {
+      const matchesFilter = activeFilter === 'All objects'
+        || product.materialType === activeFilter
+        || product.treatment.toLowerCase().includes(activeFilter.toLowerCase())
+
+      const searchableText = [
+        product.title,
+        product.material,
+        product.category,
+        product.origin,
+        product.treatment,
+      ].join(' ').toLowerCase()
+
+      return matchesFilter && searchableText.includes(normalizedQuery)
+    })
+  }, [activeFilter, query])
 
   return (
-    <div className="vault-container">
+    <main className="vault-container">
       <section className="vault-header">
-        <h1>The Jade Vault</h1>
-        <p>Discover our curated collection of premium jade pieces</p>
+        <span>The Jade Vault</span>
+        <h1>The quiet collection</h1>
+        <p>
+          A minimalist reference for browsing jade through material, origin, treatment,
+          and condition notes before any purchase conversation begins.
+        </p>
+        <div className="vault-controls">
+          <label className="vault-search">
+            <span>Search collection</span>
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Pendant, jadeite, untreated..."
+            />
+          </label>
+        </div>
+        <div className="vault-filters" aria-label="Collection filters">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              className={activeFilter === filter ? 'active' : ''}
+              onClick={() => setActiveFilter(filter)}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
       </section>
 
-      <JadeCollection items={jadeItems} />
-    </div>
+      {filteredItems.length > 0 ? (
+        <JadeCollection items={filteredItems} reserveTray={reserveTray} />
+      ) : (
+        <section className="empty-state">
+          <h2>No pieces found</h2>
+          <p>Try a different material, treatment note, or object name.</p>
+          <button onClick={() => {
+            setActiveFilter('All objects')
+            setQuery('')
+          }}>
+            Clear filters
+          </button>
+        </section>
+      )}
+    </main>
   )
 }
